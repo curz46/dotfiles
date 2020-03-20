@@ -1,7 +1,7 @@
 !--------------------xdefauls
 
-urxvt*font:				xft:Fira Code:size=12
-urxvt*leterSpace:       -10
+urxvt*font:			    Fira Code:size=12
+urxvt*letterSpace:      -10
 urxvt*termName:         rxvt
 urxvt*background:       #0c0d0e
 urxvt*foreground:       #7f8f9f

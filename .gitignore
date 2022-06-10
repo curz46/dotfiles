@@ -1,0 +1,25 @@
+# reference: https://github.com/bitprophet/dotfiles/blob/main/.gitignore
+
+# ignore everything
+* 
+# this file
+!.gitignore
+# user scripts
+!bin
+!bin/*.sh
+!bin/.gitkeep
+# configuration files 
+!.config
+!.config/sway
+!.config/sway/*
+!.config/fish
+!.config/fish/*
+!.config/fish/functions
+!.config/fish/functions/*
+!.config/.gitkeep
+
+# Vim settings
+!.vimrc
+# tip: use vim-packs to reinstall each instance of packadd!
+
+

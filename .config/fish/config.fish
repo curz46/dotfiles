@@ -12,13 +12,14 @@ if status is-interactive
     alias gaa='git add -A'
     alias gc='git commit'
     alias gcam='git commit --amend'
+    alias gd="git diff HEAD"
 
     # prevent accidental overwrite
     alias mv='mv -i'
     alias rm='rm -i'
 
     # modern utils
-    alias cat='bat'
+    alias cat='bat -p'
     alias ls='exa'
     alias l='exa -l'
 end

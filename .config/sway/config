@@ -222,4 +222,7 @@ default_floating_border pixel 1
 # make terminal transparent
 for_window [app_id="Alacritty"] opacity 0.85
 
+# redshift
+exec wlsunset -l 53.0 -L -2.5 -t 4000 -T 6500
+
 include /etc/sway/config.d/*

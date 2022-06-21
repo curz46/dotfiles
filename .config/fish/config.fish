@@ -3,6 +3,8 @@ if status is-interactive
  
     fish_add_path $HOME/bin
 
+    set -gx EDITOR vim
+
     alias gs='git status'
     alias gst='git status'
     alias gp='git push'

@@ -17,6 +17,8 @@
 !.config/fish/functions
 !.config/fish/functions/*
 !.config/.gitkeep
+!.config/alacritty
+!.config/alacritty/*
 
 # Vim settings
 !.vimrc

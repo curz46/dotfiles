@@ -59,17 +59,18 @@ filetype plugin indent on
 """""""""""""""""""""""""" PLUGINS CONFIGURATION """"""""""""""""""""""""""""""
 packadd vim-packs
 
-" COLORSCHEME
-packadd! gruvbox-material
-" For dark version.
-set background=dark
-" Set contrast.
-" Available values: 'hard', 'medium'(default), 'soft'
-let g:gruvbox_material_background = 'soft'
-" For better performance
-let g:gruvbox_material_better_performance = 1
-colorscheme gruvbox-material
-
+if empty( $NO_VIM_COLOUR )
+    " COLORSCHEME
+    packadd! gruvbox-material
+    " For dark version.
+    set background=dark
+    " Set contrast.
+    " Available values: 'hard', 'medium'(default), 'soft'
+    let g:gruvbox_material_background = 'soft'
+    " For better performance
+    let g:gruvbox_material_better_performance = 1
+    colorscheme gruvbox-material
+endif
 " STATUS BAR
 packadd! lightline.vim
 set laststatus=2

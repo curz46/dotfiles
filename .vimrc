@@ -1,3 +1,5 @@
+set ffs=unix,dos
+
 set sts=4
 set ts=4
 set sw=4
@@ -23,12 +25,6 @@ nnoremap <silent> <C-d> "kyy "kp
 nnoremap <silent> <C-s> :w<CR>
 inoremap <silent> <C-s> <ESC>:w<CR>
 nnoremap <silent> <C-c> <ESC>
-
-map [1;5D <C-Left>
-map [1;5C <C-Right>
-
-map [1;5A <C-Up>
-map [1;5B <C-Down>
 
 nnoremap <silent> <C-Left>  <C-W><Left>
 nnoremap <silent> <C-Right> <C-W><Right>

@@ -45,8 +45,13 @@ nnoremap <silent> <C-S-Right> <C-W>L
 nnoremap <silent> <C-S-Up> <C-W>K
 nnoremap <silent> <C-S-Down> <C-W>J
 
-" nnoremap / /\v
-" vnoremap / /\v
+" https://superuser.com/a/321726
+"" delete without yanking
+nnoremap <silent> d "_d
+vnoremap <silent> d "_d
+"" replace currently selected text with default register
+"" without yanking it
+vnoremap <silent> p "_dP
 
 syntax on
 

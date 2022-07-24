@@ -14,6 +14,8 @@
 !.config/sway/*
 !.config/fish
 !.config/fish/*
+# ignore local configuration
+.config/fish/local.fish
 !.config/fish/functions
 !.config/fish/functions/*
 # don't sync wsl git -> git.exe

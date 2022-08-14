@@ -49,7 +49,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 ## Input configuration
 
 input "*" {
-    natural_scroll enabled
+    natural_scroll enable
     xkb_layout gb
 }
 

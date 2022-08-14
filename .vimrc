@@ -50,6 +50,10 @@ nnoremap <silent> <C-S-Down> <C-W>J
 "" without yanking it
 vnoremap <silent> p "_dP
 
+" vim-argwrap
+let mapleader = ","
+nnoremap <silent> <leader>a :ArgWrap<CR>
+
 syntax on
 
 set timeoutlen=1000 ttimeoutlen=0
@@ -77,7 +81,10 @@ endif
 packadd! lightline.vim
 set laststatus=2
 
-packadd! vim-visual-multi
+" packadd! vim-visual-multi
+" packadd! splitjoin.vim
+
+packadd! vim-argwrap
 
 " FILETYPES 
 packadd! vim-fish

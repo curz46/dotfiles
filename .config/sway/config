@@ -212,6 +212,14 @@ default_floating_border pixel 1
 
 # make terminal transparent
 for_window [app_id="Alacritty"] opacity 0.85
+# make intellij float
+for_window [class="jetbrains-idea-ce" title="Welcome to IntelliJ IDEA"] floating enable
+for_window [class="jetbrains-idea-ce" title="splash"] floating enable
+for_window [class="jetbrains-studio" title="Android Studio Setup Wizard"] floating enable
+for_window [class="jetbrains-studio" title="Welcome to Android Studio"] floating enable
+for_window [class="jetbrains-studio" title="win0"] floating enable
+# make nemo float
+for_window [app_id="nemo"] floating enable
 
 # redshift
 exec wlsunset -l 53.0 -L -2.5 -t 4000 -T 6500

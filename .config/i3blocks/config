@@ -79,9 +79,9 @@ interval=3
 # The script may be called with a optional argument to set the alert
 # (defaults to 10 for 10%).
 [disk]
-command=
-label=ROOT
+command=$HOME/bin/disk.sh
 instance=/
+separator=false
 interval=30
 
 
@@ -99,7 +99,7 @@ command=$HOME/bin/cpu.sh
 label=CPU 
 interval=10
 min_width=100.00%
-#separator=false
+separator=false
 
 #[load_average]
 #interval=10

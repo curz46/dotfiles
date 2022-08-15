@@ -24,6 +24,9 @@ if status is-interactive
     alias ls='exa'
     alias l='exa -l'
 
+    # timetracking
+    alias tt='timetrace'
+
     # machine-dependent configuration (not synced)
     source $HOME/.config/fish/local.fish
 end

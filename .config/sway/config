@@ -13,7 +13,7 @@ set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu dmenu-wl_run -i
+set $menu dmenu-wl_run -i -m HDMI-A-1
 
 set $filemanager nemo
 set $lock waylock --init-color "#000000" --input-color "#333333"
@@ -45,8 +45,13 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 ## Input configuration
 
 input "*" {
-    natural_scroll enable
+    
+    #natural_scroll enable
+    natural_scroll disable
     xkb_layout gb
+
+    accel_profile flat
+    pointer_accel 0.1
 }
 
 # You can get the names of your inputs by running: swaymsg -t get_inputs
@@ -210,5 +215,15 @@ for_window [app_id="Alacritty"] opacity 0.85
 
 # redshift
 exec wlsunset -l 53.0 -L -2.5 -t 4000 -T 6500
+
+# monitors
+
+workspace 1 output HDMI-A-1
+workspace 3 output eDP-1
+
+output HDMI-A-1 pos 0 0
+output eDP-1 pos 2560 0
+
+focus output HDMI-A-1
 
 include /etc/sway/config.d/*

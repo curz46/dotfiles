@@ -42,12 +42,13 @@ nnoremap <silent> <C-S-Up> <C-W>K
 nnoremap <silent> <C-S-Down> <C-W>J
 
 " https://superuser.com/a/321726
-"" delete without yanking
-nnoremap <silent> d "_d
-vnoremap <silent> d "_d
 "" replace currently selected text with default register
 "" without yanking it
 vnoremap <silent> p "_dP
+
+" vim-argwrap
+let mapleader = ","
+nnoremap <silent> <leader>a :ArgWrap<CR>
 
 syntax on
 
@@ -76,7 +77,12 @@ endif
 packadd! lightline.vim
 set laststatus=2
 
-packadd! vim-visual-multi
+" packadd! vim-visual-multi
+" packadd! splitjoin.vim
+
+packadd! vim-argwrap
 
 " FILETYPES 
 packadd! vim-fish
+packadd! vim-jsx-pretty
+packadd! vim-elixir

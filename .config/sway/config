@@ -220,6 +220,8 @@ for_window [class="jetbrains-studio" title="Welcome to Android Studio"] floating
 for_window [class="jetbrains-studio" title="win0"] floating enable
 # make nemo float
 for_window [app_id="nemo"] floating enable
+# make feh float
+for_window [class="feh"] floating enable
 
 # redshift
 exec wlsunset -l 53.0 -L -2.5 -t 4000 -T 6500

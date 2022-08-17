@@ -4,6 +4,11 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+# import (unsynced) local configuration for variables
+# expects:
+# - $primary_monitor
+include $HOME/.config/sway/local
+
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -13,7 +18,7 @@ set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu dmenu-wl_run -i -m HDMI-A-1
+set $menu dmenu-wl_run -i -m $primary_monitor
 
 set $filemanager nemo
 set $lock waylock --init-color "#000000" --input-color "#333333"

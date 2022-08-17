@@ -1,6 +1,7 @@
 #!/bin/bash
 
-SSID_NAME=$(iw dev wlp2s0 link | awk '/SSID/{print $2}')
+INTERFACE=$($HOME/bin/wifi_interface.sh)
+SSID_NAME=$(iw dev $INTERFACE link | awk '/SSID/{print $2}')
 
 # You can put any urgent name so the block will give warning
 # if a network with this name is used, like public wifi or alike.

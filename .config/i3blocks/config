@@ -46,7 +46,6 @@ separator=true
 [wifi]
 command=$HOME/bin/ssid.sh
 label=SSID 
-instance=wlp2s0
 interval=10
 separator=false
 
@@ -85,10 +84,10 @@ separator=false
 interval=30
 
 
-[bandwidth]
-#instance=eth0
-command=
-interval=5
+#[bandwidth]
+##instance=eth0
+#command=
+#interval=5
 
 # CPU usage
 #

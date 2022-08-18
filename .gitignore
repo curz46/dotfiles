@@ -11,7 +11,7 @@
 # configuration files 
 !.config
 !.config/sway
-!.config/sway/*
+!.config/sway/config
 !.config/fish
 !.config/fish/*
 !.config/i3blocks

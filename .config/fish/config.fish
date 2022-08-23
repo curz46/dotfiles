@@ -30,6 +30,8 @@ if status is-interactive
     # timetracking
     alias tt='timetrace'
 
+    alias feh='feh --scale-down'
+
     # machine-dependent configuration (not synced)
     source $HOME/.config/fish/local.fish
 end

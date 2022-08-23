@@ -87,3 +87,4 @@ packadd! vim-fish
 packadd! vim-jsx-pretty
 packadd! vim-elixir
 packadd! zig.vim
+packadd! vim-pkgbuild

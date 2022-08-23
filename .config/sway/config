@@ -22,6 +22,11 @@ set $menu dmenu-wl_run -i -m $primary_monitor
 
 set $filemanager nemo
 set $lock waylock --init-color "#000000" --input-color "#333333"
+set $screengrab_area $HOME/bin/grimshot save area
+set $screengrab_output $HOME/bin/grimshot save output
+set $screengrab_window $HOME/bin/grimshot save window
+
+set $screengrabs $HOME/screengrabs
 
 ### Output configuration
 #
@@ -84,6 +89,10 @@ input "type:keyboard" {
 
     # Screen lock (waylock)
     bindsym $mod+l exec $lock
+
+    # Screenshot (grim)
+    bindsym $mod+Shift+s exec $screengrab_area
+    bindsym Print exec $screengrab_output
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.

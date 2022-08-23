@@ -8,6 +8,7 @@
 !bin
 !bin/*.sh
 !bin/.gitkeep
+!bin/grimshot
 # configuration files 
 !.config
 !.config/sway

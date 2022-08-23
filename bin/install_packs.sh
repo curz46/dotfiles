@@ -8,3 +8,4 @@ vpacks install FooSoft/vim-argwrap
 vpacks install MaxMEllon/vim-jsx-pretty
 vpacks install elixir-editors/vim-elixir
 vpacks install m-pilia/vim-pkgbuild
+vpacks install ziglang/zig.vim

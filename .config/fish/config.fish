@@ -4,6 +4,7 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
     fish_add_path $HOME/bin
     fish_add_path $HOME/.cargo/bin
+    fish_add_path $HOME/.local/bin
 
     set -gx EDITOR vim
 
@@ -26,9 +27,6 @@ if status is-interactive
     alias cat='bat -p'
     alias ls='exa'
     alias l='exa -l'
-
-    # timetracking
-    alias tt='timetrace'
 
     alias feh='feh --scale-down'
 

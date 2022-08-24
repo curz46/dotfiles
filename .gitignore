@@ -9,6 +9,7 @@
 !bin/*.sh
 !bin/.gitkeep
 !bin/grimshot
+!bin/meeting
 # configuration files 
 !.config
 !.config/sway

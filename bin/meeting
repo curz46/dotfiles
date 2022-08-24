@@ -5,7 +5,7 @@
 # while remembering the last task to continue afterwards.
 # Time is tracked using togglCli (toggl).
 
-RESUME_FILE=/tmp/toggl_resume
+resume_file=/tmp/toggl_resume
 toggl=$HOME/.local/bin/toggl
 
 argument=$1
@@ -17,32 +17,33 @@ if [ "$argument" = "start" ]; then
     description=$(echo $status | sed -rn '1 s/^(.*) #.*$/\1/p')
     project=$(echo $status | sed -rn 's/^.*Project: ([a-zA-Z]+).*$/\1/p')
 
-    if test -f $RESUME_FILE; then
-        echo "$RESUME_FILE exists; meeting in progress."
+    if test -f $resume_file; then
+        echo "$resume_file exists; meeting in progress."
         $toggl now
         exit 1
     fi 
 
-    echo $project > $RESUME_FILE
-    echo $description >> $RESUME_FILE
+    echo $project > $resume_file
+    echo $description >> $resume_file
 
-    $toggl start -o meetings "$@ "
+    # this is cursed
+    $toggl start -o meetings "$*"
 
     exit 0
 fi
 
 if [ "$argument" = "stop" ]; then
-    if test ! -f $RESUME_FILE; then
-        echo "$RESUME_FILE doesn't exist; use 'meeting start' to start a meeting."
+    if test ! -f $resume_file; then
+        echo "$resume_file doesn't exist; use 'meeting start' to start a meeting."
         exit 1
     fi
 
-    resume=$(cat $RESUME_FILE)
+    resume=$(cat $resume_file)
     project=$(echo -e "$resume" | head -1)
     description=$(echo -e "$resume" | head -2 | tail -1)
 
     $toggl start -o $project "$description"
-    rm $RESUME_FILE -f
+    rm $resume_file -f
     
     exit 0
 fi

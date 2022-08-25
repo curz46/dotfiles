@@ -1,0 +1,23 @@
+# synced user scripts
+# - i3blocks scripts
+!battery
+!cpu
+!disk
+!task # uses toggl
+!ssid
+!memory
+!winterface
+# - sway/wm related
+!grimshot
+# - general utilities
+!font_find
+!gen_mirrors
+!randomword
+!lspacman
+# - future reference scripts
+!setup_arch # not intended to be directly executed
+!setup_vpacks # vim scripts
+# - work related
+!start_tftp
+!neored
+# - uncategorized (for now)

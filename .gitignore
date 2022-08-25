@@ -6,10 +6,7 @@
 !.gitignore
 # user scripts
 !bin
-!bin/*.sh
-!bin/.gitkeep
-!bin/grimshot
-!bin/meeting
+!bin/.gitignore
 # configuration files 
 !.config
 !.config/sway

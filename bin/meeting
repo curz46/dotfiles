@@ -26,7 +26,6 @@ if [ "$argument" = "start" ]; then
     echo $project > $resume_file
     echo $description >> $resume_file
 
-    # this is cursed
     $toggl start -o meetings "$*"
 
     exit 0

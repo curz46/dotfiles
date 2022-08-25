@@ -1,6 +1,6 @@
 #!/bin/bash
 
-INTERFACE=$($HOME/bin/wifi_interface.sh)
+INTERFACE=$($HOME/bin/winterface)
 SSID_NAME=$(iw dev $INTERFACE link | awk '/SSID/{print $2}')
 
 # You can put any urgent name so the block will give warning

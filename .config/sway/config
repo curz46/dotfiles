@@ -6,7 +6,7 @@
 
 # import (unsynced) local configuration for variables
 # expects:
-# - $primary_monitor
+# - $output_primary
 include $HOME/.config/sway/local
 
 ### Variables
@@ -18,7 +18,7 @@ set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu dmenu-wl_run -i -m $primary_monitor
+set $menu dmenu-wl_run -i -m $output_primary
 
 set $filemanager nemo
 set $lock waylock --init-color "#000000" --input-color "#333333"
@@ -246,8 +246,8 @@ exec wlsunset -l 53.0 -L -2.5 -t 4000 -T 6500
 
 # monitors
 
-workspace 1 output HDMI-A-1
-workspace 3 output eDP-1
+workspace 1 output $output_primary
+workspace 3 output $output_2
 
 output HDMI-A-1 pos 0 0
 output eDP-1 pos 2560 0

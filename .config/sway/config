@@ -4,7 +4,7 @@
 #
 # Read `man 5 sway` for a complete reference.
 
-# import (unsynced) local configuration for variables
+# import (unsynced) local configuration 
 # expects:
 # - $output_primary
 include $HOME/.config/sway/local
@@ -240,18 +240,9 @@ for_window [class="jetbrains-studio" title="win0"] floating enable
 for_window [app_id="nemo"] floating enable
 # make feh float
 for_window [class="feh"] floating enable
+for_window [app_id="stoken-gui"] floating enable
 
 # redshift
 exec wlsunset -l 53.0 -L -2.5 -t 4000 -T 6500
-
-# monitors
-
-workspace 1 output $output_primary
-workspace 3 output $output_2
-
-output HDMI-A-1 pos 0 0
-output eDP-1 pos 2560 0
-
-focus output HDMI-A-1
 
 include /etc/sway/config.d/*

@@ -20,6 +20,8 @@ set $term alacritty
 # on the original workspace that the command was run on.
 set $menu dmenu-wl_run -i -m $output_primary
 
+set $bluetooth blueman
+
 set $filemanager nemo
 set $lock waylock --init-color "#000000" --input-color "#333333"
 set $screengrab_area $HOME/bin/grimshot save area
@@ -90,6 +92,9 @@ input "type:keyboard" {
     # Screen lock (waylock)
     bindsym $mod+l exec $lock
 
+    # Bluetooth (blueman)
+    bindsym $mod+Shift+b exec $bluetooth
+
     # Screenshot (grim)
     bindsym $mod+Shift+s exec $screengrab_area
     bindsym Print exec $screengrab_output
@@ -155,7 +160,7 @@ input "type:keyboard" {
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
-    bindsym $mod+b splith
+    bindsym $mod+h splith
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
@@ -241,6 +246,9 @@ for_window [app_id="nemo"] floating enable
 # make feh float
 for_window [class="feh"] floating enable
 for_window [app_id="stoken-gui"] floating enable
+# make blueman float
+for_window [app_id="blueman-manager"] floating enable
+for_window [app_id="blueman"] floating enable
 
 # redshift
 exec wlsunset -l 53.0 -L -2.5 -t 4000 -T 6500

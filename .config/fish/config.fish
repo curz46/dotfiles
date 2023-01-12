@@ -30,6 +30,9 @@ if status is-interactive
 
     alias feh='feh --scale-down'
 
+    # moc theme
+    alias mocp='mocp -T default_theme'
+
     # machine-dependent configuration (not synced)
     source $HOME/.config/fish/local.fish
 end

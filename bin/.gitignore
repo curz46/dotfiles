@@ -1,5 +1,6 @@
 # synced user scripts
 # - i3blocks scripts
+!*/
 !battery
 !cpu
 !disk
@@ -9,6 +10,8 @@
 !winterface
 # - sway/wm related
 !grimshot
+!floating #launch as floating
+!sway_config
 # - general utilities
 !font_find
 !gen_mirrors

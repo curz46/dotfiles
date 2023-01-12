@@ -1,0 +1,32 @@
+#!/bin/bash
+
+SOURCE_DIR=$HOME/etc
+DESTINATION_DIR=/etc/sway/config.d
+DESTINATION_NAME=99-monitors.conf
+
+if [ $# != 1 ]; then
+  echo "Usage: sway_config <file>"
+  echo ""
+  echo "Moves <file> to /etc/sway/config.d/99-monitors.conf"
+  echo "Searches current directory, then \$SOURCE_DIR."
+  exit 1
+fi
+
+config=$1
+fname=./$config.conf
+
+if [ -f "$fname" ]; then
+  sudo cp $fname $DESTINATION_DIR/$DESTINATION_NAME
+  echo "Copied $fname to $DESTINATION_DIR/$DESTINATION_NAME..."
+  exit 0
+fi
+
+fname=$SOURCE_DIR/$config.conf
+
+if [ -f "$fname" ]; then
+  sudo cp $fname $DESTINATION_DIR/$DESTINATION_NAME
+  echo "Copied $fname to $DESTINATION_DIR/$DESTINATION_NAME"
+  exit 0
+fi
+
+echo "Couldn't find specified config file in search directories."

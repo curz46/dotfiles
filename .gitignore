@@ -17,6 +17,9 @@
 !.config/fish/*
 !.config/i3blocks
 !.config/i3blocks/*
+!.logseq/
+!.logseq/config
+!.logseq/config/*
 # ignore local configuration
 .config/fish/local.fish
 !.config/fish/functions

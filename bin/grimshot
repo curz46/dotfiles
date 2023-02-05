@@ -39,7 +39,7 @@ done
 
 ACTION=${1:-usage}
 SUBJECT=${2:-screen}
-RANDOM_WORD=$($HOME/bin/randomword.sh)
+RANDOM_WORD=$($HOME/bin/randomword)
 FILE=${3:-$(getTargetDirectory)/$(date +'%y-%m-%d_%Hh%Mm%Ss')_$RANDOM_WORD.png}
 
 if [ "$ACTION" != "save" ] && [ "$ACTION" != "copy" ] && [ "$ACTION" != "check" ]; then

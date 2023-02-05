@@ -20,6 +20,7 @@
 !.logseq/
 !.logseq/config
 !.logseq/config/*
+!.logseq/settings
 # ignore local configuration
 .config/fish/local.fish
 !.config/fish/functions

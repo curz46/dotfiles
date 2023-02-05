@@ -1,0 +1,16 @@
+# Only sync plugin configuration which are guaranteed to be safe...
+# i.e. no API keys
+!logseq-awesome-ui.json
+!logseq-awesome-ui_layouts.json
+!logseq-banners-plugin.json
+!logseq-banners-plugin_layouts.json
+!logseq-blocknav.json
+!logseq-blocknav_layouts.json
+!logseq-bullet-threading.json
+!logseq-bullet-threading_layouts.json
+!logseq-journals-calendar.json
+!logseq-journals-calendar_layouts.json
+!logseq-random-block.json
+!logseq-random-block_layouts.json
+!logseq-vim-editor.json
+!logseq-vim-editor_layouts.json

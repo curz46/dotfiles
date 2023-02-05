@@ -21,6 +21,9 @@
 !.logseq/config
 !.logseq/config/*
 !.logseq/settings
+# fonts
+!.config/fontconfig
+!.config/fontconfig/*
 # ignore local configuration
 .config/fish/local.fish
 !.config/fish/functions

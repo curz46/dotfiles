@@ -4,6 +4,8 @@ set sts=4
 set ts=4
 set sw=4
 set expandtab
+set visualbell
+set noerrorbells
 
 set autoindent
 set number
@@ -16,7 +18,7 @@ set expandtab
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
-set clipboard=unnamedplus
+" set clipboard=unnamedplus
 
 nnoremap <silent> <C-k> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 

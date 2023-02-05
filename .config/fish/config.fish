@@ -7,12 +7,12 @@ if status is-interactive
     fish_add_path $HOME/.local/bin
 
     set -gx EDITOR vim
+    set -gx TERM xterm-256color
 
     alias gs='git status'
     alias gst='git status'
     alias gp='git push'
-    alias gl='git pull'
-    alias glg='git log --oneline'
+    alias gl='git log --oneline'
     alias ga='git add'
     alias gaa='git add -A'
     alias gc='git commit'
@@ -27,11 +27,10 @@ if status is-interactive
     alias cat='bat -p'
     alias ls='exa'
     alias l='exa -l'
+    alias diff='delta'
+    alias df='dust'
 
     alias feh='feh --scale-down'
-
-    # moc theme
-    alias mocp='mocp -T default_theme'
 
     # machine-dependent configuration (not synced)
     source $HOME/.config/fish/local.fish

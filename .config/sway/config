@@ -7,7 +7,7 @@
 # import (unsynced) local configuration 
 # expects:
 # - $output_primary
-include $HOME/.config/sway/local
+include /etc/sway/config.d/*
 
 ### Variables
 #
@@ -21,9 +21,10 @@ set $term alacritty
 set $menu dmenu-wl_run -i -m $output_primary
 
 set $bluetooth blueman
+set $audiomixer pavucontrol
 
 set $filemanager nemo
-set $lock waylock --init-color "#000000" --input-color "#333333"
+set $lock waylock
 set $screengrab_area $HOME/bin/grimshot save area
 set $screengrab_output $HOME/bin/grimshot save output
 set $screengrab_window $HOME/bin/grimshot save window
@@ -94,6 +95,9 @@ input "type:keyboard" {
 
     # Bluetooth (blueman)
     bindsym $mod+Shift+b exec $bluetooth
+
+    # Audio Mixer (pavucontrol)
+    bindsym $mod+Shift+p exec $audiomixer
 
     # Screenshot (grim)
     bindsym $mod+Shift+s exec $screengrab_area
@@ -249,10 +253,9 @@ for_window [app_id="stoken-gui"] floating enable
 # make blueman float
 for_window [app_id="blueman-manager"] floating enable
 for_window [app_id="blueman"] floating enable
+for_window [app_id="pavucontrol"] floating enable
 
 # redshift
 exec wlsunset -l 53.0 -L -2.5 -t 4000 -T 6500
 exec dunst
 #exec dropbox
-
-include /etc/sway/config.d/*

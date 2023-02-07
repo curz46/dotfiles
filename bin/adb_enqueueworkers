@@ -1,0 +1,2 @@
+#!/bin/bash
+adb shell su root am broadcast -a com.att.hwmonitor.intent.action.ENQUEUE_ALL_WORKERS --receiver-include-background

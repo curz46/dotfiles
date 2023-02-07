@@ -1,0 +1,14 @@
+#! /bin/sh
+if [ "z${1}" = "z" ] || [ "z${2}" = "z" ]; then
+    echo "Strip garbage characters from a text file. This command"
+    echo "specifically allows the following characters to pass through"
+    echo "this filter:"
+    echo "octal 11: tab"
+    echo "octal 12: linefeed"
+    echo "octal 15: carriage return"
+    echo "octal 40 through octal 176: all the \"good\" keyboard characters"
+    echo ""
+    echo "Usage: $0 <input file> <cleaned output file>"
+    exit
+fi
+tr -cd '\11\12\15\40-\176' < $1 > $2

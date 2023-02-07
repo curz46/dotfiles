@@ -1,0 +1,23 @@
+#!/bin/bash
+#IP=192.168.1.107
+#IP=192.168.8.142
+#IP=192.168.8.223
+#IP=192.168.100.125
+#IP=192.168.100.130
+#echo $IP
+CACHENAME=$HOME/.stb_ip_cache
+
+IP=$(timeout -k 5 10 comexec su root ifconfig eth0 | grep -e "inet addr:\([^ ]\)*" | cut -d ':' -f 2 | cut -d ' ' -f 1)
+
+if [[ -z "$IP" ]]; then
+    if [[ -f $CACHENAME ]]; then
+        IP=$(cat $CACHENAME)
+        >&2 echo "STB offline; using cached address $IP"
+    else
+        >&2 echo "STB offline"
+        exit 1
+    fi
+fi
+
+echo "$IP" > $CACHENAME
+echo "$IP"

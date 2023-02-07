@@ -1,0 +1,22 @@
+#!/bin/bash
+
+BOX=$(stb_addr)
+
+echo "calling adb connect until success"
+
+while [[ 1 ]]
+do
+    output=$(timeout -k 10 5 adb connect $BOX)
+
+    # check for interrupt
+    echo $?
+    test $? -gt 128 && break; 
+
+    if [[ "$output" =~ ^.*connected.*$ ]]; then
+        echo "success; exiting"
+        exit 0
+    else
+        #echo "failed; trying again in 2 seconds..."
+        sleep 4
+    fi
+done

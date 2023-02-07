@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+tshark -r $1 -T fields -e bthci_evt.bd_addr -e bthci_evt.device_name -e btcommon.eir_ad.entry.device_name | bat

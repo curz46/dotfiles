@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+adb shell logcat -b all -G 100M 

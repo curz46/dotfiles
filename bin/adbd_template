@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Logcat greps here...
+alacritty -e bash -c 'adb logcat | grep foo' &
+
+# Kill all conveniently
+trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
+sleep infinity

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+LOG=$1
+
+grep -rie 'ro.serialno' $LOG

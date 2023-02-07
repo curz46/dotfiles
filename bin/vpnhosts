@@ -1,0 +1,11 @@
+#!/bin/bash
+
+CONFIGFILE=$HOME/etc/vpns.conf
+# ignore comments
+vpns=$(cat $CONFIGFILE | grep -v '^#')
+
+if [ "$#" -ne 0 ]; then
+    echo "$vpns" | tr -s ' ' | grep $1 | cut -d ' ' -f 2 | tr -s '\n' ' '
+else
+    echo "$vpns" | tr -s ' ' | cut -d ' ' -f 2 | tr -s '\n' ' '
+fi

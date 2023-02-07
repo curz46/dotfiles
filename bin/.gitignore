@@ -17,10 +17,32 @@
 !gen_mirrors
 !randomword
 !lspacman
+!vpacks
+!remove_garbage
 # - future reference scripts
 !setup_arch # not intended to be directly executed
 !setup_vpacks # vim scripts
 # - work related
-!start_tftp
+!adb_down
+!adb_enqueueworkers
+!adb_link
+!adb_ok
+!adbd_template
+!auniq
+!btsnooz.py
+!comexec
+!floating
+!log
+!logcat_extend
+!logd_serial
+!logdown
 !neored
+!redvpn
+!remove_timestamp
+!remove_spaces
+!repeatedly
+!start_tftp
+!stb_addr
+!tshark_mac
+!vpnhosts
 # - uncategorized (for now)

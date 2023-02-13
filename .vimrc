@@ -4,8 +4,11 @@ set sts=4
 set ts=4
 set sw=4
 set expandtab
-set visualbell
-set noerrorbells
+
+" These two lines will fully disable any visual or noisy bell
+" on both windows and linux. >:)
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
 
 set autoindent
 set number
@@ -47,6 +50,9 @@ nnoremap <silent> <C-S-Down> <C-W>J
 "" replace currently selected text with default register
 "" without yanking it
 vnoremap <silent> p "_dP
+
+nnoremap <silent> <C-j> :w !wl-copy<CR>
+vnoremap <silent> <C-j> :'<,'>w !wl-copy<CR>
 
 " vim-argwrap
 let mapleader = ","

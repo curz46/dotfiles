@@ -2,21 +2,20 @@
 
 BOX=$(stb_addr)
 
-echo "calling adb connect until success"
+echo "adb_link: Found $BOX, connecting..."
+trap "echo adb_link: Interrupted...;exit" INT
 
 while [[ 1 ]]
 do
-    output=$(timeout -k 10 5 adb connect $BOX)
+    output=$(timeout --foreground -k 10 5 adb connect $BOX)
 
     # check for interrupt
-    echo $?
     test $? -gt 128 && break; 
 
     if [[ "$output" =~ ^.*connected.*$ ]]; then
-        echo "success; exiting"
+        echo "adb_link: Connected to $BOX"
         exit 0
     else
-        #echo "failed; trying again in 2 seconds..."
-        sleep 4
+        sleep 1
     fi
 done

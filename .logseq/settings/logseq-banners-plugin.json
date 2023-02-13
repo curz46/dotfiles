@@ -17,7 +17,7 @@
   "widgetsCustomEnabled": "off",
   "widgetsCustomCode": "<iframe id=\"banner-widgets-pomo\" src=\"https://pomofocus.io/app\"></iframe>",
   "journalHeading": null,
-  "defaultJournalBanner": "https://wallpaperaccess.com/full/1146672.jpg",
+  "defaultJournalBanner": "https://unsplash.it/1920/1080/?random",
   "journalBannerHeight": "280px",
   "journalBannerAlign": "50%",
   "defaultJournalIcon": "📔",

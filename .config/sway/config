@@ -25,6 +25,7 @@ set $audiomixer pavucontrol
 
 set $filemanager nemo
 set $lock waylock
+set $browser microsoft-edge-beta
 set $screengrab_area $HOME/bin/grimshot save area
 set $screengrab_output $HOME/bin/grimshot save output
 set $screengrab_window $HOME/bin/grimshot save window
@@ -92,6 +93,8 @@ input "type:keyboard" {
 
     # Screen lock (waylock)
     bindsym $mod+l exec $lock
+
+    bindsym $mod+b exec $browser
 
     # Bluetooth (blueman)
     bindsym $mod+Shift+b exec $bluetooth
@@ -258,4 +261,5 @@ for_window [app_id="pavucontrol"] floating enable
 # redshift
 exec wlsunset -l 53.0 -L -2.5 -t 4000 -T 6500
 exec dunst
+exec rescuetime
 #exec dropbox

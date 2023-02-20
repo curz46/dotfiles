@@ -8,6 +8,10 @@ pacman -Syyu sway swaybg xorg-xwayland waylock
 pacman -Syyu ttf-hack alacritty
 # file manager
 pacman -Syyu nemo
+# modern utilities
+pacman -Syyu bat httpie git-delta dust ripgrep
+# security
+pacman -Syyu usbguard
 
 pacman -Syyu --needed git base-devel
 git clone https://aur.archlinux.org/yay-bin.git
@@ -16,6 +20,7 @@ makepkg -si
 cd ..
 rm yay-bin -rf
 
-yay -Syyu microsoft-edge-stable-bin 
-yay -Syyu dmemu-wayland-git # wayland port of dmenu
-yay -Syyu wlsunset
+# userland
+yay -Syyu microsoft-edge-stable-bin dmenu-wayland-git wlsunset
+# convenience
+yay -Syyu usbguard-notifier

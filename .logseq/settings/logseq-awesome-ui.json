@@ -13,7 +13,7 @@
   "contentFlashcard": "awesome",
   "featureHeadersLabelsEnabled": true,
   "appUIHeading": null,
-  "featureHomeButtonEnabled": false,
+  "featureHomeButtonEnabled": true,
   "featureSidebarNewPageEnabled": false,
   "featureSidebarPageIconEnabled": false,
   "featureNewBlockBulletEnabled": false,

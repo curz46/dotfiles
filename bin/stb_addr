@@ -5,16 +5,19 @@
 #IP=192.168.100.125
 #IP=192.168.100.130
 #echo $IP
-CACHENAME=$HOME/.stb_ip_cache
+#
+BASENAME=$(basename "$0")
+CACHENAME="$HOME/.stb_ip_cache"
 
-IP=$(timeout -k 5 10 comexec su root ifconfig eth0 | grep -e "inet addr:\([^ ]\)*" | cut -d ':' -f 2 | cut -d ' ' -f 1)
+IP=$(timeout -k 5 10 comexec su root ifconfig eth0 2>/dev/null)
+IP=$(echo "$IP" | grep -e "inet addr:\([^ ]\)*" | cut -d ':' -f 2 | cut -d ' ' -f 1)
 
-if [[ -z "$IP" ]]; then
-    if [[ -f $CACHENAME ]]; then
+if [ -z "$IP" ]; then
+    if [ -f "$CACHENAME" ]; then
         IP=$(cat $CACHENAME)
-        >&2 echo "STB offline; using cached address $IP"
+        >&2 echo "$BASENAME: Cannot access serial console... reading from cache."
     else
-        >&2 echo "STB offline"
+        >&2 echo "$BASENAME: Cannot access serial console..."
         exit 1
     fi
 fi

@@ -25,7 +25,7 @@ set $audiomixer pavucontrol
 
 set $filemanager nemo
 set $lock waylock
-set $browser microsoft-edge-beta
+set $browser firefox
 set $screengrab_area $HOME/bin/grimshot save area
 set $screengrab_output $HOME/bin/grimshot save output
 set $screengrab_window $HOME/bin/grimshot save window
@@ -257,6 +257,7 @@ for_window [app_id="stoken-gui"] floating enable
 for_window [app_id="blueman-manager"] floating enable
 for_window [app_id="blueman"] floating enable
 for_window [app_id="pavucontrol"] floating enable
+for_window [class="Gifview"] floating enable
 
 # redshift
 exec wlsunset -l 53.0 -L -2.5 -t 4000 -T 6500

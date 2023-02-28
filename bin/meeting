@@ -14,8 +14,8 @@ shift
 if [ "$argument" = "start" ]; then
     status=$($toggl now)
 
-    description=$(echo $status | sed -rn '1 s/^(.*) #.*$/\1/p')
-    project=$(echo $status | sed -rn 's/^.*Project: ([a-zA-Z\-]+).*$/\1/p')
+    description=$(echo "$status" | sed -rn '1 s/^(.*) #.*$/\1/p')
+    project=$(echo "$status" | sed -rn 's/^.*Project: ([a-zA-Z\-]+).*$/\1/p')
 
     if test -f $resume_file; then
         echo "$resume_file exists; meeting in progress."
@@ -23,8 +23,8 @@ if [ "$argument" = "start" ]; then
         exit 1
     fi 
 
-    echo $project > $resume_file
-    echo $description >> $resume_file
+    echo "$project" > $resume_file
+    echo "$description" >> $resume_file
 
     $toggl start -o meetings "$*"
 
@@ -41,7 +41,7 @@ if [ "$argument" = "stop" ]; then
     project=$(echo -e "$resume" | head -1)
     description=$(echo -e "$resume" | head -2 | tail -1)
 
-    if [ ! $($toggl start -o $project "$description") ]; then
+    if [ ! $($toggl start -o "$project" "$description") ]; then
         # don't remove file !
         exit 1
     fi

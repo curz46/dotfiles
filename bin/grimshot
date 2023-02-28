@@ -13,7 +13,7 @@
 ## See `man 1 grimshot` or `grimshot usage` for further details.
 
 getTargetDirectory() {
-    echo $HOME/screengrabs
+    echo "$HOME"/screengrabs
 }
 
 NOTIFY=no
@@ -39,7 +39,7 @@ done
 
 ACTION=${1:-usage}
 SUBJECT=${2:-screen}
-RANDOM_WORD=$($HOME/bin/randomword)
+RANDOM_WORD=$("$HOME"/bin/randomword)
 FILE=${3:-$(getTargetDirectory)/$(date +'%y-%m-%d_%Hh%Mm%Ss')_$RANDOM_WORD.png}
 
 if [ "$ACTION" != "save" ] && [ "$ACTION" != "copy" ] && [ "$ACTION" != "check" ]; then
@@ -160,9 +160,9 @@ if takeScreenshot "$FILE" "$GEOM" "$OUTPUT"; then
   TITLE="Screenshot of $SUBJECT"
   MESSAGE=$(basename "$FILE")
   # Copy to clipboard
-  cat $FILE | wl-copy -t image/png || die "Clipboard error"
+  cat "$FILE" | wl-copy -t image/png || die "Clipboard error"
   # Display to user
-  feh $FILE
+  feh "$FILE"
   notifyOk "$MESSAGE" "$TITLE"
   echo "$FILE"
 else

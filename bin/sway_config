@@ -16,7 +16,7 @@ config=$1
 fname=./$config.conf
 
 if [ -f "$fname" ]; then
-  sudo cp $fname $DESTINATION_DIR/$DESTINATION_NAME
+  sudo cp "$fname" $DESTINATION_DIR/$DESTINATION_NAME
   echo "Copied $fname to $DESTINATION_DIR/$DESTINATION_NAME..."
   exit 0
 fi
@@ -24,7 +24,7 @@ fi
 fname=$SOURCE_DIR/$config.conf
 
 if [ -f "$fname" ]; then
-  sudo cp $fname $DESTINATION_DIR/$DESTINATION_NAME
+  sudo cp "$fname" $DESTINATION_DIR/$DESTINATION_NAME
   echo "Copied $fname to $DESTINATION_DIR/$DESTINATION_NAME"
   exit 0
 fi

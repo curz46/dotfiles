@@ -7,7 +7,7 @@ trap "echo adb_link: Interrupted...;exit" INT
 
 while [[ 1 ]]
 do
-    output=$(timeout --foreground -k 10 5 adb connect $BOX)
+    output=$(timeout --foreground -k 10 5 adb connect "$BOX")
 
     # check for interrupt
     test $? -gt 128 && break; 

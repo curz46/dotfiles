@@ -2,4 +2,4 @@
 
 LOG=$1
 
-grep -rie 'ro.serialno' $LOG
+grep -rie 'ro.serialno' "$LOG"

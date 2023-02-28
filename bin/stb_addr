@@ -14,7 +14,7 @@ IP=$(echo "$IP" | grep -e "inet addr:\([^ ]\)*" | cut -d ':' -f 2 | cut -d ' ' -
 
 if [ -z "$IP" ]; then
     if [ -f "$CACHENAME" ]; then
-        IP=$(cat $CACHENAME)
+        IP=$(cat "$CACHENAME")
         >&2 echo "$BASENAME: Cannot access serial console... reading from cache."
     else
         >&2 echo "$BASENAME: Cannot access serial console..."
@@ -22,5 +22,5 @@ if [ -z "$IP" ]; then
     fi
 fi
 
-echo "$IP" > $CACHENAME
+echo "$IP" > "$CACHENAME"
 echo "$IP"

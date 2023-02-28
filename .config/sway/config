@@ -81,6 +81,8 @@ input "type:keyboard" {
 #
     # Start a terminal
     bindsym $mod+Return exec $term
+    
+    bindsym $mod+Shift+Return exec floating $term;
 
     # Kill focused window
     bindsym $mod+Shift+q kill
@@ -258,6 +260,8 @@ for_window [app_id="blueman-manager"] floating enable
 for_window [app_id="blueman"] floating enable
 for_window [app_id="pavucontrol"] floating enable
 for_window [class="Gifview"] floating enable
+
+#for_window [floating] opacity 1
 
 # redshift
 exec wlsunset -l 53.0 -L -2.5 -t 4000 -T 6500

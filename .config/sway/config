@@ -25,7 +25,8 @@ set $audiomixer pavucontrol
 
 set $filemanager nemo
 set $lock waylock
-set $browser firefox
+set $browser brave
+set $passwords bitwarden-desktop
 set $screengrab_area $HOME/bin/grimshot save area
 set $screengrab_output $HOME/bin/grimshot save output
 set $screengrab_window $HOME/bin/grimshot save window
@@ -100,6 +101,9 @@ input "type:keyboard" {
 
     # Bluetooth (blueman)
     bindsym $mod+Shift+b exec $bluetooth
+
+    # Passwords (bitwarden)
+    bindsym $mod+Ctrl+p exec $passwords
 
     # Audio Mixer (pavucontrol)
     bindsym $mod+Shift+p exec $audiomixer
@@ -260,6 +264,8 @@ for_window [app_id="blueman-manager"] floating enable
 for_window [app_id="blueman"] floating enable
 for_window [app_id="pavucontrol"] floating enable
 for_window [class="Gifview"] floating enable
+for_window [class="Bitwarden"] floating enable
+for_window [class="MEGAsync"] floating enable
 
 #for_window [floating] opacity 1
 

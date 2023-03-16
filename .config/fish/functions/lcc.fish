@@ -1,4 +1,3 @@
-function lcc --wraps='adb logcat -c -b all' --description 'alias lcc=adb logcat -c -b all'
-  adb logcat -c -b all $argv
-        
+function lcc --wraps='adb logcat -c -b all'
+ logcat_extend; logcat_clear; 
 end

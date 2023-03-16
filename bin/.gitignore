@@ -1,24 +1,17 @@
 # synced user scripts
-# - i3blocks scripts
 !*/
-!battery
-!cpu
-!disk
-!task # uses toggl
-!ssid
-!memory
-!winterface
 # - sway/wm related
+!floating
 !grimshot
-!floating #launch as floating
 !sway_config
 # - general utilities
 !font_find
 !gen_mirrors
-!randomword
 !lspacman
-!vpacks
+!randomword
 !remove_garbage
+!sysinfo
+!vpacks
 # - future reference scripts
 !setup_arch # not intended to be directly executed
 !setup_vpacks # vim scripts
@@ -38,8 +31,8 @@
 !logdown
 !neored
 !redvpn
-!remove_timestamp
 !remove_spaces
+!remove_timestamp
 !repeatedly
 !start_tftp
 !stb_addr

@@ -29,7 +29,7 @@ separator_block_width=15
 markup=none
 
 [task]
-command=$HOME/bin/task
+command=$HOME/bin/sysinfo task
 interval=120
 separator=true
 
@@ -44,7 +44,7 @@ separator=true
 #separator=false
 
 [wifi]
-command=$HOME/bin/ssid
+command=$HOME/bin/sysinfo ssid
 label=SSID 
 interval=10
 separator=false
@@ -67,7 +67,7 @@ separator=false
 # The type defaults to "mem" if the instance is not specified.
 [memory]
 label=MEM 
-command=$HOME/bin/memory
+command=$HOME/bin/sysinfo memory
 separator=false
 interval=3
 
@@ -78,7 +78,7 @@ interval=3
 # The script may be called with a optional argument to set the alert
 # (defaults to 10 for 10%).
 [disk]
-command=$HOME/bin/disk
+command=$HOME/bin/sysinfo disk
 instance=/
 separator=false
 interval=30
@@ -94,11 +94,18 @@ interval=30
 # The script may be called with -w and -c switches to specify thresholds,
 # see the script for details.
 [cpu_usage]
-command=$HOME/bin/cpu
+command=$HOME/bin/sysinfo cpu
 label=CPU 
 interval=10
 min_width=100.00%
 separator=false
+
+
+[mouse]
+label=MOUSE
+command=$HOME/bin/sysinfo mouse
+#instance=1
+interval=30
 
 #[load_average]
 #interval=10
@@ -108,7 +115,7 @@ separator=false
 # The battery instance defaults to 0.
 [battery]
 label=BAT
-command=$HOME/bin/battery
+command=$HOME/bin/sysinfo battery
 #instance=1
 interval=30
 

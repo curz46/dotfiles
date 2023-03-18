@@ -2,6 +2,9 @@ set -gx XDG_CONFIG_HOME $HOME/.config
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
+    fish_add_path /sbin
+    fish_add_path /usr/bin
+    fish_add_path /bin
     fish_add_path $HOME/bin
     fish_add_path $HOME/.cargo/bin
     fish_add_path $HOME/.local/bin

@@ -66,33 +66,10 @@ set timeoutlen=1000 ttimeoutlen=0
 " (Not necessary on nvim and may not be necessary on vim 8.2+)
 filetype plugin indent on
 
-"""""""""""""""""""""""""" PLUGINS CONFIGURATION """"""""""""""""""""""""""""""
-packadd vim-packs
+set autoindent smartindent
+set clipboard+=unnamedplus
+set autoread
 
-if empty( $NO_VIM_COLOUR )
-    " COLORSCHEME
-    packadd! gruvbox-material
-    " For dark version.
-    set background=dark
-    " Set contrast.
-    " Available values: 'hard', 'medium'(default), 'soft'
-    let g:gruvbox_material_background = 'soft'
-    " For better performance
-    let g:gruvbox_material_better_performance = 1
-    colorscheme gruvbox-material
-endif
-" STATUS BAR
-packadd! lightline.vim
-set laststatus=2
-
-" packadd! vim-visual-multi
-" packadd! splitjoin.vim
-
-packadd! vim-argwrap
-
-" FILETYPES 
-packadd! vim-fish
-packadd! vim-jsx-pretty
-packadd! vim-elixir
-packadd! zig.vim
-packadd! vim-pkgbuild
+call plug#begin()
+Plug 'jbyuki/instant.nvim'
+call plug#end()

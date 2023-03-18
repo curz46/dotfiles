@@ -23,11 +23,11 @@ case "$1" in
     ssid)
         # $HOME/bin/ssid
 
-        ETHERNET_INTERFACE=$(ip route | awk '/^default / {print $5; exit}')
+        INTERFACE=$(ip route | awk '/^default / {print $5; exit}')
 
         # If the default route is an Ethernet interface and it's connected, output "LAN"
-        if [[ -n "$ETHERNET_INTERFACE" ]] && [[ -e /sys/class/net/"$ETHERNET_INTERFACE"/operstate ]] && [[ "$ETHERNET_INTERFACE" =~ ^eth|^en ]]; then
-            ETHERNET_STATUS=$(cat /sys/class/net/"$ETHERNET_INTERFACE"/operstate)
+        if [[ -n "$INTERFACE" ]] && [[ -e /sys/class/net/"$INTERFACE"/operstate ]] && [[ "$INTERFACE" =~ ^eth|^en ]]; then
+            ETHERNET_STATUS=$(cat /sys/class/net/"$INTERFACE"/operstate)
             if [[ "$ETHERNET_STATUS" == "up" ]]; then
                 echo "LAN"
                 echo "LAN"
@@ -36,8 +36,7 @@ case "$1" in
             fi
         fi
 
-        WIFI_INTERFACE=$("$HOME"/bin/winterface)
-        SSID_NAME=$(iw dev "$WIFI_INTERFACE" link | awk '/SSID/{print $2}')
+        SSID_NAME=$(iw dev "$INTERFACE" link | awk '/SSID/{print $2}')
 
         # You can put any urgent name so the block will give warning
         # if a network with this name is used, like public wifi or alike.
@@ -122,55 +121,6 @@ case "$1" in
         echo "$usage"
         echo "$usage"
         echo ""
-        # $HOME/bin/cpu
-        #!/bin/bash
-        # Source: http://askubuntu.com/a/450136
-
-        URGENT_VALUE=90
-
-        PREV_TOTAL=0
-        PREV_IDLE=0
-
-        cpuFile="/tmp/.cpu"
-
-        if [[ -f "${cpuFile}" ]]; then
-          fileCont=$(cat "${cpuFile}")
-          PREV_TOTAL=$(echo "${fileCont}" | head -n 1)
-          PREV_IDLE=$(echo "${fileCont}" | tail -n 1)
-        fi
-
-        CPU=($(cat /proc/stat | grep '^cpu ')) # Get the total CPU statistics.
-        unset CPU[0]                          # Discard the "cpu" prefix.
-        IDLE=${CPU[4]}                        # Get the idle CPU time.
-
-        # Calculate the total CPU time.
-        TOTAL=0
-
-        for VALUE in "${CPU[@]:0:4}"; do
-          let "TOTAL=$TOTAL+$VALUE"
-        done
-
-        if [[ "${PREV_TOTAL}" != "" ]] && [[ "${PREV_IDLE}" != "" ]]; then
-          # Calculate the CPU usage since we last checked.
-          let "DIFF_IDLE=$IDLE-$PREV_IDLE"
-          let "DIFF_TOTAL=$TOTAL-$PREV_TOTAL"
-          let "DIFF_USAGE=(1000*($DIFF_TOTAL-$DIFF_IDLE)/$DIFF_TOTAL+5)/10"
-          echo "${DIFF_USAGE}%"
-          echo "${DIFF_USAGE}%"
-          echo ""
-        else
-          echo "?"
-          echo "?"
-          echo ""
-        fi
-
-        # Remember the total and idle CPU times for the next check.
-        echo "${TOTAL}" > "${cpuFile}"
-        echo "${IDLE}" >> "${cpuFile}"
-
-        if [[ "${DIFF_USAGE}" -gt 0 ]] && [[ "${DIFF_USAGE}" -gt "${URGENT_VALUE}" ]]; then
-          exit 33
-        fi
         ;;
     battery)
         # $HOME/bin/battery

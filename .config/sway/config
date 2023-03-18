@@ -20,7 +20,7 @@ set $term alacritty
 # on the original workspace that the command was run on.
 set $menu dmenu-wl_run -i -m $output_primary
 
-set $bluetooth blueman
+set $bluetooth blueman-manager
 set $audiomixer pavucontrol
 
 set $filemanager nemo

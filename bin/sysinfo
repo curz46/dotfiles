@@ -9,25 +9,46 @@ case "$1" in
     task)
         TOGGL=$HOME/.local/bin/toggl
 
-        sum=$($TOGGL sum)
+        sum=$($TOGGL sum -st --start $(startofweek))
         status=$($TOGGL now)
 
+        total=$(echo "$sum" | awk '/^ total/ {print $2}')
         today=$(echo "$sum" | sed -rn 's/^.*today[ ]+([0-9]{0,1}[0-9]:[0-9][0-9]:[0-9][0-9]).*$/\1/p')
         description="$(echo "$status" | sed -rn '1 s/^(.*) #.*$/\1/p' | cut -c -30)..."
         project=$(echo "$status" | sed -rn 's/^.*Project: ([^\(]+).*$/\1/p' | xargs)
         duration=$(echo "$status" | sed -rn 's/^.*Duration: ([0-9]{0,1}[0-9]:[0-9][0-9]:[0-9][0-9]).*$/\1/p')
 
-        echo "[$project] $description $duration / $today"
-        echo "[$project] $description $duration / $today"
+        # Convert today and total to seconds
+        today_seconds=$(echo $today | awk -F: '{print $1*3600 + $2*60 + $3}')
+        total_seconds=$(echo $total | awk -F: '{print $1*3600 + $2*60 + $3}')
+
+        # Calculate the day of the week (1 for Monday, 7 for Sunday)
+        day_of_week=$(date +%u)
+
+        # Calculate the expected total seconds for the current day of the week
+        expected_total_seconds=$(awk -v day="$day_of_week" 'BEGIN {print day * 7.5 * 3600}')
+
+        # Calculate the remaining seconds to work today
+        remaining_seconds=$(awk -v total="$total_seconds" -v today="$today_seconds" -v expected="$expected_total_seconds" 'BEGIN {print expected - total}')
+
+        # Convert remaining seconds to hours, minutes, and seconds
+        remaining_hours=$(awk -v remaining="$remaining_seconds" 'BEGIN {printf "%d", remaining / 3600}')
+        remaining_minutes=$(awk -v remaining="$remaining_seconds" 'BEGIN {printf "%d", (remaining % 3600) / 60}')
+        remaining_seconds=$(awk -v remaining="$remaining_seconds" 'BEGIN {printf "%d", remaining % 60}')
+
+        remaining=$(printf "%d:%02d:%02d" $remaining_hours $remaining_minutes $remaining_seconds)
+
+        echo "[$project] $description $duration / $today / $remaining"
+        echo "[$project] $description $duration / $today / $remaining"
         ;;
     ssid)
         # $HOME/bin/ssid
 
-        INTERFACE=$(ip route | awk '/^default / {print $5; exit}')
+        ETHERNET_INTERFACE=$(ip route | awk '/^default / {print $5; exit}')
 
         # If the default route is an Ethernet interface and it's connected, output "LAN"
-        if [[ -n "$INTERFACE" ]] && [[ -e /sys/class/net/"$INTERFACE"/operstate ]] && [[ "$INTERFACE" =~ ^eth|^en ]]; then
-            ETHERNET_STATUS=$(cat /sys/class/net/"$INTERFACE"/operstate)
+        if [[ -n "$ETHERNET_INTERFACE" ]] && [[ -e /sys/class/net/"$ETHERNET_INTERFACE"/operstate ]] && [[ "$ETHERNET_INTERFACE" =~ ^eth|^en ]]; then
+            ETHERNET_STATUS=$(cat /sys/class/net/"$ETHERNET_INTERFACE"/operstate)
             if [[ "$ETHERNET_STATUS" == "up" ]]; then
                 echo "LAN"
                 echo "LAN"
@@ -36,7 +57,8 @@ case "$1" in
             fi
         fi
 
-        SSID_NAME=$(iw dev "$INTERFACE" link | awk '/SSID/{print $2}')
+        WIFI_INTERFACE=$("$HOME"/bin/winterface)
+        SSID_NAME=$(iw dev "$WIFI_INTERFACE" link | awk '/SSID/{print $2}')
 
         # You can put any urgent name so the block will give warning
         # if a network with this name is used, like public wifi or alike.
@@ -121,13 +143,62 @@ case "$1" in
         echo "$usage"
         echo "$usage"
         echo ""
+        # $HOME/bin/cpu
+        #!/bin/bash
+        # Source: http://askubuntu.com/a/450136
+
+        URGENT_VALUE=90
+
+        PREV_TOTAL=0
+        PREV_IDLE=0
+
+        cpuFile="/tmp/.cpu"
+
+        if [[ -f "${cpuFile}" ]]; then
+          fileCont=$(cat "${cpuFile}")
+          PREV_TOTAL=$(echo "${fileCont}" | head -n 1)
+          PREV_IDLE=$(echo "${fileCont}" | tail -n 1)
+        fi
+
+        CPU=($(cat /proc/stat | grep '^cpu ')) # Get the total CPU statistics.
+        unset CPU[0]                          # Discard the "cpu" prefix.
+        IDLE=${CPU[4]}                        # Get the idle CPU time.
+
+        # Calculate the total CPU time.
+        TOTAL=0
+
+        for VALUE in "${CPU[@]:0:4}"; do
+          let "TOTAL=$TOTAL+$VALUE"
+        done
+
+        if [[ "${PREV_TOTAL}" != "" ]] && [[ "${PREV_IDLE}" != "" ]]; then
+          # Calculate the CPU usage since we last checked.
+          let "DIFF_IDLE=$IDLE-$PREV_IDLE"
+          let "DIFF_TOTAL=$TOTAL-$PREV_TOTAL"
+          let "DIFF_USAGE=(1000*($DIFF_TOTAL-$DIFF_IDLE)/$DIFF_TOTAL+5)/10"
+          echo "${DIFF_USAGE}%"
+          echo "${DIFF_USAGE}%"
+          echo ""
+        else
+          echo "?"
+          echo "?"
+          echo ""
+        fi
+
+        # Remember the total and idle CPU times for the next check.
+        echo "${TOTAL}" > "${cpuFile}"
+        echo "${IDLE}" >> "${cpuFile}"
+
+        if [[ "${DIFF_USAGE}" -gt 0 ]] && [[ "${DIFF_USAGE}" -gt "${URGENT_VALUE}" ]]; then
+          exit 33
+        fi
         ;;
     battery)
         # $HOME/bin/battery
         #!/bin/bash
 
         BATTERY=0
-        BATTERY_INFO=$(acpi -b | grep "Battery ${BATTERY}")
+        BATTERY_INFO=$(acpi -b | grep "Battery" | grep -v "rate information unavailable")
         BATTERY_STATE=$(echo "${BATTERY_INFO}" | grep -wo "Full\|Charging\|Discharging")
         BATTERY_POWER=$(echo "${BATTERY_INFO}" | grep -o '[0-9]\+%' | tr -d '%')
 
@@ -203,7 +274,9 @@ case "$1" in
         ;;
     mouse)
         # Get the battery status of the mouse using solaar
-        MOUSE_BATTERY_STATUS=$(solaar show | grep -Eo "Battery: [0-9]+" | head -n 1)
+        # 'Battery: 3887mV, discharging, 60.'
+        #MOUSE_BATTERY_STATUS=$(solaar show | grep -Eo "Battery: [0-9]+" | awk '{print $3}')
+        MOUSE_BATTERY_STATUS=$(solaar show | grep -Eo "Battery: [0-9]+mV, [^\.]*[0-9]+" | awk '{ print $4 }')
         MOUSE_BATTERY_PERCENT=$(echo "$MOUSE_BATTERY_STATUS" | grep -Eo "[0-9]+")
 
         # Format the output similar to the battery subcommand

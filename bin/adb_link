@@ -1,6 +1,13 @@
 #!/bin/bash
 
-BOX=$(stb_addr)
+FW_FILE=/tmp/.adb_forwarded
+
+if [ -f "$FW_FILE" ]; then
+    echo "ADB forwarding is enabled, trying localhost:6666 (magic port)"
+    BOX=localhost:6666
+else
+    BOX=$(stb_addr)
+fi
 
 echo "adb_link: Found $BOX, connecting..."
 trap "echo adb_link: Interrupted...;exit" INT

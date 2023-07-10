@@ -20,13 +20,14 @@ set $term alacritty
 # on the original workspace that the command was run on.
 set $menu dmenu-wl_run -i -m $output_primary
 
-set $bluetooth blueman-manager
+set $bluetooth blueman
 set $audiomixer pavucontrol
 
 set $filemanager nemo
-set $lock waylock
-set $browser brave
+set $lock swaylock
+set $browser brave-browser
 set $passwords bitwarden-desktop
+set $issues sh -c 'cd /k/JIRAdash && python3 ./JIRAdash'
 set $screengrab_area $HOME/bin/grimshot save area
 set $screengrab_output $HOME/bin/grimshot save output
 set $screengrab_window $HOME/bin/grimshot save window
@@ -60,17 +61,19 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 ## Input configuration
 
 input "type:touchpad" {
-    natural_scroll enable
+natural_scroll enable
 }
 
 input "type:pointer" {
-    natural_scroll disable
-    accel_profile flat
-    pointer_accel 0.1
+natural_scroll disable
+accel_profile flat
+pointer_accel 0.1
 }
 
 input "type:keyboard" {
-    xkb_layout gb
+xkb_layout gb
+    repeat_delay 225
+    repeat_rate 20
 }
 
 # You can get the names of your inputs by running: swaymsg -t get_inputs
@@ -111,6 +114,8 @@ input "type:keyboard" {
     # Screenshot (grim)
     bindsym $mod+Shift+s exec $screengrab_area
     bindsym Print exec $screengrab_output
+    # Issue management
+    bindsym $mod+j exec $issues
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -247,10 +252,11 @@ default_border pixel 1
 default_floating_border pixel 1
 
 # make terminal transparent
-for_window [app_id="Alacritty"] opacity 0.85
+for_window [app_id="Alacritty"] opacity 0.9
 # make intellij float
 for_window [class="jetbrains-idea-ce" title="Welcome to IntelliJ IDEA"] floating enable
 for_window [class="jetbrains-idea-ce" title="splash"] floating enable
+for_window [class="jetbrains-studio" title="splash"] floating enable
 for_window [class="jetbrains-studio" title="Android Studio Setup Wizard"] floating enable
 for_window [class="jetbrains-studio" title="Welcome to Android Studio"] floating enable
 for_window [class="jetbrains-studio" title="win0"] floating enable

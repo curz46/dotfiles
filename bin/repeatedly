@@ -1,5 +1,15 @@
 #!/bin/bash
 
+<<<<<<< HEAD
+=======
+PROMPT=0
+
+if [ "$1" = "-p" ]; then
+    PROMPT=1
+    shift
+fi
+
+>>>>>>> 80d78e8 (Local changes)
 cleanup ()
 {
     kill -s SIGTERM $!
@@ -11,5 +21,13 @@ trap cleanup SIGINT SIGTERM
 while [ 1 ]; do
     $@ &
     wait $!
+<<<<<<< HEAD
     sleep 1
+=======
+    if [ $PROMPT -eq 0 ]; then
+        sleep 1
+    else
+        read
+    fi
+>>>>>>> 80d78e8 (Local changes)
 done

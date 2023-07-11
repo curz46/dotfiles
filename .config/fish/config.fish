@@ -27,7 +27,7 @@ if status --is-interactive
     alias rm='rm -i'
 
     # modern utils
-    alias cat='bat -p'
+    alias cat='batcat -p'
     alias ls='exa'
     alias l='exa -l'
     alias diff='delta'

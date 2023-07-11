@@ -1,2 +1,2 @@
-#!/bin/sh
+#!/usr/bin/sh
 awk '!x[$0]++'

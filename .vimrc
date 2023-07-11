@@ -73,3 +73,7 @@ set autoread
 call plug#begin()
 Plug 'jbyuki/instant.nvim'
 call plug#end()
+
+" IdeaVim
+set incsearch
+set multiplecursors

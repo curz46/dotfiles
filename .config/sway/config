@@ -8,6 +8,7 @@
 # expects:
 # - $output_primary
 include /etc/sway/config.d/*
+include ~/.config/sway/outputs
 
 ### Variables
 #
@@ -25,7 +26,7 @@ set $audiomixer pavucontrol
 
 set $filemanager nemo
 set $lock swaylock
-set $browser brave-browser
+set $browser brave
 set $passwords bitwarden-desktop
 set $issues sh -c 'cd /k/JIRAdash && python3 ./JIRAdash'
 set $screengrab_area $HOME/bin/grimshot save area
@@ -37,7 +38,8 @@ set $screengrabs $HOME/screengrabs
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+set $backgrounds_dir /usr/share/backgrounds/sway
+output * bg $backgrounds_dir/Sway_Wallpaper_Blue_2048x1536.png fill
 #
 # Example configuration:
 #
@@ -252,7 +254,7 @@ default_border pixel 1
 default_floating_border pixel 1
 
 # make terminal transparent
-for_window [app_id="Alacritty"] opacity 0.9
+#for_window [app_id="Alacritty"] opacity 0.9
 # make intellij float
 for_window [class="jetbrains-idea-ce" title="Welcome to IntelliJ IDEA"] floating enable
 for_window [class="jetbrains-idea-ce" title="splash"] floating enable
@@ -280,3 +282,5 @@ exec wlsunset -l 53.0 -L -2.5 -t 4000 -T 6500
 exec dunst
 exec rescuetime
 #exec dropbox
+
+exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP

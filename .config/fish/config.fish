@@ -30,7 +30,7 @@ if status --is-interactive
     alias cat='batcat -p'
     alias ls='exa'
     alias l='exa -l'
-    alias diff='delta'
+    #alias diff='delta'
     alias df='dust'
 
     alias feh='feh --scale-down'

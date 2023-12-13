@@ -87,8 +87,6 @@ xkb_layout gb
 #
     # Start a terminal
     bindsym $mod+Return exec $term
-    
-    bindsym $mod+Shift+Return exec floating $term;
 
     # Kill focused window
     bindsym $mod+Shift+q kill

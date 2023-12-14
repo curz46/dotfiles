@@ -33,8 +33,6 @@ set $screengrab_area $HOME/bin/grimshot save area
 set $screengrab_output $HOME/bin/grimshot save output
 set $screengrab_window $HOME/bin/grimshot save window
 
-set $screengrabs $HOME/screengrabs
-
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -272,6 +270,7 @@ for_window [app_id="pavucontrol"] floating enable
 for_window [class="Gifview"] floating enable
 for_window [class="Bitwarden"] floating enable
 for_window [class="MEGAsync"] floating enable
+for_window [class="org.cryptomator.launcher.Cryptomator$MainApp"] floating enable
 
 #for_window [floating] opacity 1
 

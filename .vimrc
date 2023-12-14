@@ -16,6 +16,10 @@ set number
 set formatoptions-=cro
 set colorcolumn=100
 
+set tw=100
+# 58 seems to be the approximate length of a Bitbucket hover comment.
+au FileType gitcommit setlocal tw=58
+
 set expandtab
 
 " <Ctrl-l> redraws the screen and removes any search highlighting.

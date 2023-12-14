@@ -12,9 +12,7 @@
 ##
 ## See `man 1 grimshot` or `grimshot usage` for further details.
 
-getTargetDirectory() {
-    echo "$HOME"/screengrabs
-}
+TARGET_DIRECTORY="$SCREENGRABS"
 
 NOTIFY=no
 CURSOR=
@@ -40,7 +38,7 @@ done
 ACTION=${1:-usage}
 SUBJECT=${2:-screen}
 RANDOM_WORD=$("$HOME"/bin/randomword)
-FILE=${3:-$(getTargetDirectory)/$(date +'%y-%m-%d_%Hh%Mm%Ss')_$RANDOM_WORD.png}
+FILE=${3:-${TARGET_DIRECTORY}/$(date +'%y-%m-%d_%Hh%Mm%Ss')_$RANDOM_WORD.png}
 
 if [ "$ACTION" != "save" ] && [ "$ACTION" != "copy" ] && [ "$ACTION" != "check" ]; then
   echo "Usage:"

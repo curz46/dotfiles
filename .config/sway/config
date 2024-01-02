@@ -25,7 +25,7 @@ set $bluetooth blueman-manager
 set $audiomixer pavucontrol
 
 set $filemanager nemo
-set $lock swaylock
+set $lock swaylock -c 000000
 set $browser brave
 set $passwords bitwarden-desktop
 set $issues sh -c 'cd /k/JIRAdash && python3 ./JIRAdash'
